@@ -1,0 +1,9 @@
+<div *ngIf="isLoading" class="loading-spinner">
+    Loading...
+  </div>
+  
+  <ng-container *ngIf="!isLoading">
+    <app-page-view-navbar></app-page-view-navbar>
+    <app-contents></app-contents>
+    <app-footer></app-footer>
+  </ng-container>

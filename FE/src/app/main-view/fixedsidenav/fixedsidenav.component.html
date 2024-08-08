@@ -1,0 +1,14 @@
+<div class="sidenav">
+    <h5 class="mb-3">Categories</h5>
+    <ul class="list-unstyled">
+         
+      <li *ngFor="let item of menuItems" class="mb-2">
+        <div class="item">
+        <a (click) = "PageFilter(item.id)" class="list-group-item list-group-item-action py-2 ripple" > 
+          <!-- <img [src]="item.icon" alt="{{ item.name }}" class="me-2" width="24" height="24"> -->
+          {{ item.name }}
+        </a>
+      </div>
+      </li>
+    </ul>
+  </div>

@@ -1,0 +1,55 @@
+<div class="container" style="background-color: whitesmoke;">
+    <div class="mask-group_5-1636">
+      <div class="macbook-pro-14----1_1-3">
+        <h1 class = "header-login">Log in</h1>
+        <form (ngSubmit)="userLogin()">
+          <div class="input-container frame-10_5-1634">
+            <span class="text--username_5-1635">Username</span>
+            <input [(ngModel)]="user.username" class="frame-1_2-5" name="username" id="username" autocomplete="off">
+          </div>
+          <div class="input-container frame-5_4-1608">
+            <span class="text--password_4-1609">Password</span>
+            <input type="password" [(ngModel)]="user.password" class="frame-3_3-3" name="password" id="password" autocomplete="off">
+          </div>
+          <button   class="frame-6_4-1613">
+            <span class="text--sign-in_4-1612">Log in</span>
+          </button>
+        </form>
+       
+        <div  >
+          <span class="text-forgot-password--_4-1618">Forgot password?</span>
+        </div>
+         
+        <!-- <div class="social-login-buttons">
+          <button class="frame-7_4-1621" onclick="signInWithGoogle()">Login with Google</button>
+          <button class="frame-8_4-1625" onclick="signInWithFacebook()">Login with Facebook</button>
+        </div> -->
+        <div class="social-login-buttons">
+          
+          <asl-google-signin-button  type="standard" size="large" locale="en" ></asl-google-signin-button>
+          <!-- <div class="frame-7_4-1621" (click)="signInWithGoogle()">Login with Google</div> -->
+          <div class="frame-8_4-1625" (click)="signInWithFacebook()">Login with Facebook</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Add this at the end of your template -->
+<div class="modal fade" id="loginResultModal" tabindex="-1" aria-labelledby="loginResultModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginResultModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{modalMessage}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  

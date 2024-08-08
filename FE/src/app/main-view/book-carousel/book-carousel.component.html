@@ -1,0 +1,17 @@
+<div id="bookCarousel" class="carousel slide bookCarousel" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div *ngFor="let item of sliders; let i = index" [class]="'carousel-item' + (i === 0 ? ' active' : '')">
+      <div class="carousel-image-container">
+        <img [src]="item.image_url" class="d-block w-100 carousel-image" [alt]="'Slide ' + (i + 1)">
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#bookCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bookCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

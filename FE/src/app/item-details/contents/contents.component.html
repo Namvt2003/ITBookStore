@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6" *ngIf="book">
+        <img class="img-fluid" [src]="book.image_url" alt="Book Image" style="border: 2px solid black; scrollbar-width: thin; width: 800px;">
+
+      </div>
+      <div class="col-md-6" *ngIf="book">
+        <h1>{{ book.title }}</h1>
+        <h4>{{ book.author }}</h4>
+        <div class="input-group quantity-selector" style="margin-bottom: 30px;">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary" type="button" (click)="decrease()">-</button>
+            </div>
+            <input type="text" style="width: 0" class="form-control text-center" [(ngModel)]="quantity" [readonly]="true">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="increase()">+</button>
+            </div>
+          </div>
+        <p>{{ book.description }}</p>
+        
+        <p>{{ book.price }}₫</p>
+        <button class="btn btn-primary" style="background-color: red; margin-right: 10px; " (click)="payment()">Buy</button>
+        <button class="btn btn-primary" (click)="addToCart()" >Add to Cart</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,15 @@
+.container {
+  margin-top: 5%;
+}
+
+.fa {
+  font-size: 50px;
+}
+
+.modal {
+  display: block; /* Ensure modal is displayed */
+}
+
+.modal-content {
+  padding: 20px;
+}

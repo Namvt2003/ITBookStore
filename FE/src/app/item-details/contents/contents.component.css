@@ -1,0 +1,8 @@
+.quantity-selector .btn {
+    min-width: 40px;
+  }
+  
+  .quantity-selector input {
+    max-width: 60px;
+  }
+  

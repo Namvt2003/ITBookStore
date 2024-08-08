@@ -1,0 +1,54 @@
+<header>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-top" [ngClass]="{'sticky-top': isSticky}">
+      <div class="container">
+        
+        <a class="navbar-brand fs-2 fw-bold"  (click)="navigateToMainPage()">
+          <img src="images/techbook.png" alt="logo" style="width:200px;">IT Book Store
+          <i class="fa-solid fa-book" style="color: #f54242;"></i>
+        </a>
+        
+        <form class="form-outline d-none d-lg-flex w-100">
+          <input [formControl]="searchControl" type="text" placeholder="Filter by name" id="form1" class="form-control" #filter />
+          <label class="form-label" for="form1"></label>
+          <ul *ngIf="filteredBooks.length > 0" class="list-group">
+            <li *ngFor="let book of filteredBooks" class="list-group-item" (click)="goToDetails(book.id)">
+              <img [src]="book.image_url" alt="Book Image" style="width: 50px; height: auto;"> {{ book.title }} - {{ book.author }}
+            </li>
+          </ul>
+        </form>
+        <button (click)="onSearch()" type="button" class="btn btn-primary d-none d-lg-block">
+          <i class="fas fa-search"></i>
+        </button>
+  
+        
+        <!-- Nav Items -->
+        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0 text-center">
+            <li class="nav-item">
+              <a style="padding-top: 20px;" class="nav-link fw-semibold text-uppercase text-black me-1" href="#">
+                <i class="fa fa-user fs-5" style="color: #202122;"></i>
+              </a>
+            </li>
+            
+          <li class="nav-item">
+            <a style="padding-top: 20px;" class="nav-link fw-semibold text-uppercase text-black me-1" [routerLink]="'/order-manage'">Customers Management</a>
+          </li>
+          <li class="nav-item">
+            <a style="padding-top: 20px;" class="nav-link fw-semibold text-uppercase text-black me-1" [routerLink]="'/fileInput'">Books Upload</a>
+          </li>
+            
+
+
+             
+          
+          </ul>
+          <!-- Cart -->
+         
+        </div>
+      </div>
+    </nav>
+  
+    
+  </header>
+  

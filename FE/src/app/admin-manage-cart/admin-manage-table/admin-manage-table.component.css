@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .toExcel {
+    background-color: rgb(11, 132, 0);
+    color: white;
+    padding: 10px 20px;
+  }

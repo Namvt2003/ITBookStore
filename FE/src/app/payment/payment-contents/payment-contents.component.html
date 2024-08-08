@@ -1,0 +1,88 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Payment for IT Book</h2>
+  <div class="row">
+    <!-- Payment Form Column -->
+    <div class="col-md-7">
+      <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <!-- Customer Name -->
+        <div class="mb-3">
+          <label for="customerName" class="form-label">Customer Name</label>
+          <input type="text" class="form-control" id="customerName" formControlName="customerName" required>
+          <div class="invalid-feedback" *ngIf="paymentForm.get('customerName')?.invalid && paymentForm.get('customerName')?.touched">
+            Please provide the customer name.
+          </div>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" required>
+          <div class="invalid-feedback" *ngIf="paymentForm.get('phoneNumber')?.invalid && paymentForm.get('phoneNumber')?.touched">
+            Please provide a valid phone number.
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" class="form-control" id="address" formControlName="address" required>
+          <div class="invalid-feedback" *ngIf="paymentForm.get('address')?.invalid && paymentForm.get('address')?.touched">
+            Please provide an address.
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="mb-3">
+          <label for="paymentMethod" class="form-label">Payment Method</label>
+          <select class="form-select" id="paymentMethod" formControlName="paymentMethod">
+            <option value="payAfterDelivery">Pay after delivery</option>
+            <option value="payViaBankCard">Pay via bank card</option>
+            <option value="payViaMomo">Pay via Momo</option>
+            <option value="payViaZaloPay">Pay via ZaloPay</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="paymentForm.invalid">Submit Payment</button>
+      </form>
+    </div>
+
+    
+
+  <div class="col-md-5">
+    <div class="p-3 bg-body-tertiary">
+      <span class="fw-bold">Order Recap</span>
+      <div *ngFor="let item of cartProducts" class="d-flex justify-content-between mt-2">
+        <span style="font-style: italic;">{{ item.title }} (x{{ item.quantity }})</span> <span>{{ item.totalPrice | currency }}</span>
+      </div>
+      <hr />
+      <div class="d-flex justify-content-between mt-2">
+        <span class="lh-sm">Total</span>
+        <span>${{ totalPrice }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Pop Up Modal Frame -->
+
+<ng-template #content let-modal style="width: 1026px; height: 1026px;">
+  <div class="modal-header">
+     
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="selectedPaymentMethod === 'payViaMomo'">
+        <img  src="images/FacebookQR.png" alt="Momo QR Code" style="width: 1026px; height: 1026px;">
+    </div>
+    <div *ngIf="selectedPaymentMethod === 'payViaZaloPay'">
+      <img src="images/FacebookQR.png" alt="ZaloPay QR Code" style="width: 1026px; height: 1026px;">
+    </div>
+  </div>
+   
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button> -->
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+</ng-template>

@@ -1,0 +1,132 @@
+<header>
+  <!-- NavBar -->
+  <nav id ="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-top" [ngClass]="{'sticky-top': isStitcky}" >
+    <div class="container">
+      <button style="color: black; margin-right: 100px;" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <i class="fas fa-bars">Menu</i>
+      </button>
+      <a class="navbar-brand fs-2 fw-bold" (click)="navigateToMainPage()">
+        <img src="images/techbook.png" alt="logo" style="width:200px;">IT Book Store
+        <i class="fa-solid fa-book" style="color: #f54242;"></i>
+      </a>
+      
+
+      <form class="form-outline d-none d-lg-flex w-100">
+        <input [formControl]="searchControl" type="text" placeholder="Filter by name" id="form1" class="form-control" #filter />
+        <label class="form-label" for="form1"></label>
+        <ul *ngIf="filteredBooks.length > 0" class="list-group">
+          <li *ngFor="let book of filteredBooks" class="list-group-item" (click)="goToDetails(book.id)">
+            <img [src]="book.image_url" alt="Book Image" style="width: 50px; height: auto;"> {{ book.title }} - {{ book.author }}
+          </li>
+        </ul>
+      </form>
+      <button (click)="onSearch()" type="button" class="btn btn-primary d-none d-lg-block">
+        <i class="fas fa-search"></i>
+      </button>
+      
+      
+      
+      
+
+      
+      <!-- Nav Items -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 text-center">
+         
+          <li class="nav-item">
+            <a style="padding-top: 20px;" class="nav-link fw-semibold text-uppercase text-black me-1" href="#">
+              <i class="fa fa-user fs-5" style="color: #202122;"></i>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a [routerLink]="'/contact'" style="padding-top: 20px;" [contentEditable]="false" class="nav-link fw-semibold text-uppercase text-black me-1">Contact us</a>
+          </li>
+        </ul>
+        <!-- Cart -->
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a style="padding-top: 20px;" class="nav-link dropdown-toggle cart fw-semibold text-uppercase text-black me-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-cart-shopping fs-5" style="color: #202122;"></i>
+              <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+                {{quantity}} 
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </a>
+            <div class="dropdown-menu">
+              <div class="CartContainer">
+                <div class="row">
+                  <div class="col-6">
+                    Your Cart
+                  </div>
+                  <div   class="col-6 text-end text-danger">
+                  <button (click)="cleanCart()" >Remove All</button>  
+                  </div>
+                </div>
+                <div class="row pt-1" *ngFor="let cart of cartProducts"> 
+                  <div class="col-4">
+                    <img class="img-fluid" style="height: 15px; " [src]="cart.image_url">
+                  </div>
+                  <div class="col-3">
+                    {{cart.title}} 
+                  </div>
+                  <!-- <div class="col-2">
+                    {{this}}
+                  </div> -->
+                  <div class="col-2 text-end">
+                    {{cart.totalPrice}} 
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3"></div>
+                  <div class="col-9">
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-2"></div>
+                   <div class="col-4">
+                    <div class="Subtotal">Total Price</div>
+                    <div><small>{{cartTotalPrice}}</small></div>
+                  </div> 
+                   
+                </div>
+                <div class="row">
+                  <div class="col-12 text-end">
+                    <button class="btn btn-sm btn-success" (click)="redirectToSale()">Checkout</button>
+                  </div>
+                </div> 
+              </div>
+            </div> 
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-uppercase text-black me-1" href="#">Product</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-uppercase text-black me-1" >Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<app-book-carousel></app-book-carousel>
+
+<app-book-list></app-book-list>
+
+<app-footer></app-footer>
